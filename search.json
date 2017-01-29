@@ -1,0 +1,15 @@
+{
+  "searchProps": {
+    "sites": ["foxnews.com", "nytimes.com"],
+    "query": "javascript applications",
+    "startYear": 2007
+  },
+  "webmiddleSettings": {
+    "verbose": false
+  },
+  "evaluateOptions": {
+
+  }
+}
+
+
