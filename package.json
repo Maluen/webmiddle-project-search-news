@@ -33,7 +33,7 @@
     "babel": "inherit"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "cheerio": "^0.20.0",
     "lodash": "^4.16.1",
