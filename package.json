@@ -1,6 +1,7 @@
 {
   "name": "webmiddle-project-search-news",
-  "version": "0.0.1",
+  "private": "true",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/index.js",
   "files": [
