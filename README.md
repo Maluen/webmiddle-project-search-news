@@ -33,3 +33,13 @@ To start a fresh new search, just delete the `output` folder.
 ## Learn more
 
 Head to https://webmiddle.github.io/docs/example/ for a step-by-step guide on how this application was implemented by using [WebMiddle](https://webmiddle.github.io/).
+
+## Screenshots
+
+#### Console output:
+
+![Console output](https://webmiddle.github.io/assets/img/documentation/sample_execution_console.png)
+
+#### JSON output:
+
+![JSON output](https://webmiddle.github.io/assets/img/documentation/sample_execution_output.png)
