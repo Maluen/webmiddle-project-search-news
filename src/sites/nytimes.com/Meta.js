@@ -3,7 +3,7 @@ import parentWebmiddle from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentWebmiddle.service('SearchArticles');
 
-function Meta({ nytimesApiKey, webmiddle, options, ...rest }) {
+function Meta({ nytimesApiKey, ...rest }) {
   return (
     <Pipe>
       <Parent
@@ -30,8 +30,6 @@ function Meta({ nytimesApiKey, webmiddle, options, ...rest }) {
 
 Meta.propTypes = {
   nytimesApiKey: PropTypes.string.isRequired,
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
 };
 
 export default Meta;

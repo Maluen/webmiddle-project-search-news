@@ -11,11 +11,11 @@ function fixArticle(article) {
   };
 }
 
-function ArticleDetails({ webmiddle, options, ...rest }) {
+function ArticleDetails(props) {
   return (
     <Pipe>
       <Parent
-        {...rest}
+        {...props}
         name="page"
       />
 
@@ -29,8 +29,7 @@ function ArticleDetails({ webmiddle, options, ...rest }) {
 }
 
 ArticleDetails.propTypes = {
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
+
 };
 
 export default ArticleDetails;

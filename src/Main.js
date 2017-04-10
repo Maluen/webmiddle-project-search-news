@@ -5,15 +5,15 @@ import MergeArticles from './MergeArticles';
 import SiteMain from './SiteMain';
 import siteWebMiddles from './sites';
 
-function Main({ webmiddle, options, ...rest }) {
-  const { sites } = rest;
+function Main(props) {
+  const { sites } = props;
   return (
     <Pipe>
       <Parallel name="articlesBySite">
         {sites.map(siteName => {
           const siteWebMiddle = siteWebMiddles[siteName];
           return (
-            <SiteMain {...rest} site={siteWebMiddle} name={siteName} />
+            <SiteMain {...props} site={siteWebMiddle} name={siteName} />
           );
         })}
       </Parallel>
@@ -31,8 +31,6 @@ Main.propTypes = {
   query: PropTypes.string.isRequired,
   startYear: PropTypes.number,
   endYear: PropTypes.number,
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
 };
 
 export default Main;

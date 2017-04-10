@@ -7,7 +7,7 @@ const Parent = parentWebmiddle.service('SearchArticles');
 
 const { elGet, elMap, elPipe } = helpers;
 
-function SearchArticles({ nytimesApiKey, webmiddle, options, ...rest }) {
+function SearchArticles({ nytimesApiKey, ...rest }) {
   return (
     <Pipe>
       <Parent
@@ -59,8 +59,6 @@ function SearchArticles({ nytimesApiKey, webmiddle, options, ...rest }) {
 
 SearchArticles.propTypes = {
   nytimesApiKey: PropTypes.string.isRequired,
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
 };
 
 export default SearchArticles;

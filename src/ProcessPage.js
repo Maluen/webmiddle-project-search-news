@@ -1,4 +1,4 @@
-import WebMiddle, { PropTypes } from 'webmiddle';
+import WebMiddle, { PropTypes, WithOptions } from 'webmiddle';
 import Pipe from 'webmiddle-service-pipe';
 import ArrayMap from 'webmiddle-service-arraymap';
 import Filter from './Filter';
@@ -11,8 +11,7 @@ const createEmptyArticleDetails = () => ({
 });
 
 function ProcessPage({
-  site, query, startYear, endYear, pageNumber, filters,
-  webmiddle, options, ...rest,
+  site, query, startYear, endYear, pageNumber, filters, ...rest,
 }) {
   const SearchArticles = site.service('SearchArticles');
   const ArticleDetails = site.service('ArticleDetails');
@@ -43,14 +42,13 @@ function ProcessPage({
           limit={1}
           callback={articleContent => (
             <Pipe>
-              <ArticleDetails
-                {...rest}
-                name="articleDetails"
-                url={articleContent.url}
-                options={{
-                  catch: createEmptyArticleDetails,
-                }}
-              />
+              <WithOptions catch={createEmptyArticleDetails}>
+                <ArticleDetails
+                  {...rest}
+                  name="articleDetails"
+                  url={articleContent.url}
+                />
+              </WithOptions>
 
               {() => ({
                 name: 'article',
@@ -94,8 +92,6 @@ ProcessPage.propTypes = {
   endYear: PropTypes.number,
   pageNumber: PropTypes.number.isRequired,
   filters: PropTypes.object.isRequired,
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
 };
 
 export default ProcessPage;

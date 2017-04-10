@@ -3,11 +3,11 @@ import parentWebmiddle from 'webmiddle-site-foxnews';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentWebmiddle.service('SearchArticles');
 
-function Meta({ webmiddle, options, ...rest }) {
+function Meta(props) {
   return (
     <Pipe>
       <Parent
-        {...rest}
+        {...props}
         name="firstPage"
         pageNumber={0}
       />
@@ -28,8 +28,7 @@ function Meta({ webmiddle, options, ...rest }) {
 }
 
 Meta.propTypes = {
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
+
 };
 
 export default Meta;

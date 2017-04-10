@@ -15,8 +15,8 @@ import ProcessPage from './ProcessPage';
 import _ from 'lodash';
 import Resume from 'webmiddle-service-resume';
 
-function SiteMain({ webmiddle, options, ...rest }) {
-  const { site } = rest;
+function SiteMain(props) {
+  const { site } = props;
   const Meta = site.service('Meta');
 
   return (
@@ -26,7 +26,7 @@ function SiteMain({ webmiddle, options, ...rest }) {
       */}
 
       <Meta
-        {...rest}
+        {...props}
         name="meta"
       />
 
@@ -38,10 +38,10 @@ function SiteMain({ webmiddle, options, ...rest }) {
           callback={i => (
             <Resume savePath={`./${site.name}/articles_${i}`}>
               <ProcessPage
-                {...rest}
+                {...props}
                 name={i}
                 pageNumber={i}
-                filters={rest}
+                filters={props}
               />
             </Resume>
           )}
@@ -62,8 +62,6 @@ SiteMain.propTypes = {
   query: PropTypes.string.isRequired,
   startYear: PropTypes.number,
   endYear: PropTypes.number,
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
 };
 
 export default SiteMain;

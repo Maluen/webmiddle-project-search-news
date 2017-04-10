@@ -3,11 +3,11 @@ import parentWebmiddle from 'webmiddle-site-foxnews';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentWebmiddle.service('SearchArticles');
 
-function SearchArticles({ webmiddle, options, ...rest }) {
+function SearchArticles(props) {
   return (
     <Pipe>
       <Parent
-        {...rest}
+        {...props}
         name="page"
       />
 
@@ -21,8 +21,7 @@ function SearchArticles({ webmiddle, options, ...rest }) {
 }
 
 SearchArticles.propTypes = {
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
+
 };
 
 export default SearchArticles;

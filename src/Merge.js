@@ -1,4 +1,4 @@
-import WebMiddle, { PropTypes } from 'webmiddle';
+import WebMiddle, { PropTypes, evaluate, createContext } from 'webmiddle';
 import _ from 'lodash';
 
 // null, undefined or empty string
@@ -6,11 +6,10 @@ function isInvalid(value) {
   return _.isNil(value) || (_.isString(value) && _.isEmpty(value));
 }
 
-async function Merge({ sources, webmiddle, options }) {
-  sources = await Promise.all(sources.map(s => webmiddle.evaluate(s, {
-    ...options,
-    expectResource: true,
-  })));
+async function Merge({ sources }, context) {
+  sources = await Promise.all(
+    sources.map(s => evaluate(createContext(context, { expectResource: true }), s))
+  );
   return {
     ...sources[0],
     content: _.mergeWith({}, ...sources.map(s => s.content), (objValue, srcValue) => {
@@ -26,8 +25,6 @@ async function Merge({ sources, webmiddle, options }) {
 
 Merge.propTypes = {
   sources: PropTypes.array.isRequired, // of resources
-  webmiddle: PropTypes.object.isRequired,
-  options: PropTypes.object.isRequired,
 };
 
 export default Merge;
