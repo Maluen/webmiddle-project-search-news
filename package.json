@@ -1,7 +1,7 @@
 {
   "name": "webmiddle-project-search-news",
   "private": "true",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
   "files": [
@@ -55,7 +55,7 @@
     "webmiddle-service-pipe": "^0.2.0",
     "webmiddle-service-virtual-to-json": "^0.2.0",
     "webmiddle-service-resume": "^0.2.0",
-    "webmiddle-site-foxnews": "^0.2.0",
+    "webmiddle-site-foxnews": "^0.2.1",
     "webmiddle-site-nytimes": "^0.2.0"
   },
   "devDependencies": {

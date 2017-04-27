@@ -1,5 +1,5 @@
 import test from 'ava';
-import { evaluate, createContext } from 'webmiddle';
+import WebMiddle, { evaluate, createContext } from 'webmiddle';
 import newsSearchWebmiddle, { searchProps, evaluateOptions } from '../src/newsSearchWebmiddle';
 import Main from '../src/Main';
 
@@ -10,4 +10,6 @@ test('Main', async t => {
   }), (
     <Main {...searchProps} />
   ));
+
+  t.pass();
 });
