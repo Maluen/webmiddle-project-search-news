@@ -4,9 +4,7 @@
   "version": "0.2.0",
   "description": "",
   "main": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "engines": {
     "node": ">=6"
   },
@@ -20,19 +18,12 @@
     "prepublish": "npm run build"
   },
   "ava": {
-    "files": [
-      "tests/*.js"
-    ],
-    "source": [
-      "**/*.{js,jsx}",
-      "!dist/**/*"
-    ],
+    "files": ["tests/*.js"],
+    "source": ["**/*.{js,jsx}", "!dist/**/*"],
     "concurrency": 5,
     "failFast": true,
     "tap": true,
-    "require": [
-      "babel-register"
-    ],
+    "require": ["babel-register"],
     "babel": "inherit"
   },
   "author": "",
@@ -75,6 +66,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "webmiddle-server": "^0.2.0"
   }
 }

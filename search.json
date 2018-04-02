@@ -4,7 +4,7 @@
     "query": "javascript applications",
     "startYear": 2007
   },
-  "webmiddleSettings": {
+  "contextOptions": {
     "verbose": false
   },
   "evaluateOptions": {

@@ -1,5 +1,5 @@
 import WebMiddle, { PropTypes } from 'webmiddle';
-import parentWebmiddle from 'webmiddle-site-nytimes';
+import parentWebmiddle, { settings as parentSettings } from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentWebmiddle.service('SearchArticles');
 
@@ -20,7 +20,7 @@ function Meta({ nytimesApiKey, ...rest }) {
           contentType: 'application/json',
           content: {
             count,
-            numberOfPages: Math.ceil(count / parentWebmiddle.setting('resultsPerPage')),
+            numberOfPages: Math.ceil(count / parentSettings.resultsPerPage),
           },
         };
       }}

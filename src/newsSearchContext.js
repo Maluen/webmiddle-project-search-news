@@ -1,0 +1,62 @@
+// TODO: use the framework to define a search project with Main.js as entrypoint
+
+//import { SearchProject } from 'webmiddle-project-search';
+import WebMiddle, { createContext, pickDefaults } from "webmiddle";
+import path from "path";
+import fs from "fs";
+import Main from "./Main";
+
+// TODO: json can't specify functions for options, etc. Maybe use a js file?
+const searchJson = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "../search.json"))
+);
+const searchPrivateJson = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "../search.private.json"))
+);
+
+const giveupErrorCodes = [410];
+function isRetriable(err) {
+  return (
+    !(err instanceof Error && err.name === "HttpError") ||
+    giveupErrorCodes.indexOf(err.statusCode) === -1
+  );
+}
+
+export const evaluateOptions = {
+  expectResource: true,
+  ...(searchJson.evaluateOptions || {}),
+  ...(searchPrivateJson.evaluateOptions || {})
+};
+
+export const searchProps = {
+  ...(searchJson.searchProps || {}),
+  ...(searchPrivateJson.searchProps || {})
+};
+
+const Start = props =>
+  <Main
+    {...{
+      ...searchProps,
+      ...props
+    }}
+  />;
+Start.options = (props, context) =>
+  pickDefaults(evaluateOptions, context.options);
+
+const newsSearchWebmiddle = new WebMiddle({
+  services: {
+    start: Start
+  }
+});
+const newsSearchContext = createContext(newsSearchWebmiddle, {
+  outputBasePath: path.resolve(__dirname, "../output"),
+  verbose: false,
+  networkRetries: err => {
+    if (!isRetriable(err)) return 0;
+    return -1;
+  },
+  ...(searchJson.contextOptions || {}),
+  ...(searchPrivateJson.contextOptions || {})
+});
+
+export default newsSearchContext;
