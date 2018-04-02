@@ -3,17 +3,17 @@ import Pipe from 'webmiddle-service-pipe';
 import Parallel from 'webmiddle-service-parallel';
 import MergeArticles from './MergeArticles';
 import SiteMain from './SiteMain';
-import siteWebMiddles from './sites';
+import sites from './sites';
 
 function Main(props) {
-  const { sites } = props;
+  const { sites: siteNames } = props;
   return (
     <Pipe>
       <Parallel name="articlesBySite">
-        {sites.map(siteName => {
-          const siteWebMiddle = siteWebMiddles[siteName];
+        {siteNames.map(siteName => {
+          const site = sites[siteName];
           return (
-            <SiteMain {...props} site={siteWebMiddle} name={siteName} />
+            <SiteMain {...props} site={site} name={siteName} />
           );
         })}
       </Parallel>

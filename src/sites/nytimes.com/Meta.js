@@ -1,9 +1,9 @@
-import WebMiddle, { PropTypes } from 'webmiddle';
-import parentWebmiddle, { settings as parentSettings } from 'webmiddle-site-nytimes';
+import WebMiddle, { PropTypes, pickDefaults } from 'webmiddle';
+import parentNyTimes from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
-const Parent = parentWebmiddle.service('SearchArticles');
+const Parent = parentNyTimes.services.SearchArticles;
 
-function Meta({ nytimesApiKey, ...rest }) {
+function Meta({ nytimesApiKey, ...rest }, context) {
   return (
     <Pipe>
       <Parent
@@ -20,13 +20,21 @@ function Meta({ nytimesApiKey, ...rest }) {
           contentType: 'application/json',
           content: {
             count,
-            numberOfPages: Math.ceil(count / parentSettings.resultsPerPage),
+            numberOfPages: Math.ceil(count / context.options.resultsPerPage),
           },
         };
       }}
     </Pipe>
   );
 }
+
+Meta.options = (props, context) =>
+  pickDefaults(
+    {
+      resultsPerPage: parentNyTimes.settings.resultsPerPage
+    },
+    context.options
+  );
 
 Meta.propTypes = {
   nytimesApiKey: PropTypes.string.isRequired,

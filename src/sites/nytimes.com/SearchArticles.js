@@ -1,9 +1,9 @@
 import WebMiddle, { PropTypes } from 'webmiddle';
-import parentWebmiddle from 'webmiddle-site-nytimes';
+import parentNyTimes from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 import JSONSelectToJson, { helpers } from 'webmiddle-service-jsonselect-to-json';
 import { getFormattedDate } from '../../utils';
-const Parent = parentWebmiddle.service('SearchArticles');
+const Parent = parentNyTimes.services.SearchArticles;
 
 const { elGet, elMap, elPipe } = helpers;
 

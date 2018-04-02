@@ -1,7 +1,7 @@
 import WebMiddle, { PropTypes } from 'webmiddle';
-import parentWebmiddle from 'webmiddle-site-foxnews';
+import parentFoxNews from 'webmiddle-site-foxnews';
 import Pipe from 'webmiddle-service-pipe';
-const Parent = parentWebmiddle.service('SearchArticles');
+const Parent = parentFoxNews.services.SearchArticles;
 
 function SearchArticles(props) {
   return (

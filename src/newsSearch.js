@@ -1,7 +1,7 @@
 // TODO: use the framework to define a search project with Main.js as entrypoint
 
 //import { SearchProject } from 'webmiddle-project-search';
-import WebMiddle, { createContext, pickDefaults } from "webmiddle";
+import WebMiddle, { createContext } from "webmiddle";
 import path from "path";
 import fs from "fs";
 import Main from "./Main";
@@ -22,12 +22,6 @@ function isRetriable(err) {
   );
 }
 
-export const evaluateOptions = {
-  expectResource: true,
-  ...(searchJson.evaluateOptions || {}),
-  ...(searchPrivateJson.evaluateOptions || {})
-};
-
 export const searchProps = {
   ...(searchJson.searchProps || {}),
   ...(searchPrivateJson.searchProps || {})
@@ -37,18 +31,12 @@ const Start = props =>
   <Main
     {...{
       ...searchProps,
-      ...props
+      ...props,
     }}
   />;
-Start.options = (props, context) =>
-  pickDefaults(evaluateOptions, context.options);
 
-const newsSearchWebmiddle = new WebMiddle({
-  services: {
-    start: Start
-  }
-});
-const newsSearchContext = createContext(newsSearchWebmiddle, {
+const webmiddle = new WebMiddle();
+const context = createContext(webmiddle, {
   outputBasePath: path.resolve(__dirname, "../output"),
   verbose: false,
   networkRetries: err => {
@@ -59,4 +47,6 @@ const newsSearchContext = createContext(newsSearchWebmiddle, {
   ...(searchPrivateJson.contextOptions || {})
 });
 
-export default newsSearchContext;
+export default context;
+
+export { Start };

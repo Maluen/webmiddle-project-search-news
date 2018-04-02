@@ -1,8 +1,8 @@
 import WebMiddle, { PropTypes } from 'webmiddle';
-import parentWebmiddle from 'webmiddle-site-foxnews';
+import parentFoxNews from 'webmiddle-site-foxnews';
 import Pipe from 'webmiddle-service-pipe';
 import { getFormattedDate } from '../../utils';
-const Parent = parentWebmiddle.service('ArticleDetails');
+const Parent = parentFoxNews.services.ArticleDetails;
 
 function fixArticle(article) {
   return {

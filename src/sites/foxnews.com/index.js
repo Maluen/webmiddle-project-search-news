@@ -1,15 +1,13 @@
-import WebMiddle from 'webmiddle';
-import parentWebmiddle from 'webmiddle-site-foxnews';
+import parentFoxNews from 'webmiddle-site-foxnews';
 import Meta from './Meta';
 import SearchArticles from './SearchArticles';
 import ArticleDetails from './ArticleDetails';
 
-export default new WebMiddle({
-  name: 'foxnews.com',
-  parent: parentWebmiddle,
+export default {
+  name: parentFoxNews.name,
   services: {
     Meta,
     SearchArticles,
     ArticleDetails,
   },
-});
+};

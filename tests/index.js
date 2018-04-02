@@ -1,14 +1,12 @@
 import test from 'ava';
 import WebMiddle, { evaluate, createContext } from 'webmiddle';
-import newsSearchWebmiddle, { searchProps, evaluateOptions } from '../src/newsSearchWebmiddle';
-import Main from '../src/Main';
+import newsSearchContext, { Start } from '../src/newsSearch';
 
 test('Main', async t => {
-  await evaluate(createContext(newsSearchWebmiddle, {
-    ...evaluateOptions,
+  await evaluate(createContext(newsSearchContext, {
     expectResource: true,
   }), (
-    <Main {...searchProps} />
+    <Start />
   ));
 
   t.pass();

@@ -11,10 +11,9 @@ const createEmptyArticleDetails = () => ({
 });
 
 function ProcessPage({
-  site, query, startYear, endYear, pageNumber, filters, ...rest,
+  site, query, startYear, endYear, pageNumber, filters, ...rest
 }) {
-  const SearchArticles = site.service('SearchArticles');
-  const ArticleDetails = site.service('ArticleDetails');
+  const { SearchArticles, ArticleDetails } = site.services;
 
   return (
     <Pipe>
