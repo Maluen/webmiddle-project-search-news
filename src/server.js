@@ -1,5 +1,9 @@
 import Server from "webmiddle-server";
-import newsSearchWebmiddle from "./newsSearchWebmiddle";
+import newsSearchContext, { Start } from "./newsSearch";
 
-const server = new Server(newsSearchWebmiddle);
+const server = new Server({
+  "start": Start,
+}, {
+  context: newsSearchContext,
+});
 server.start();
