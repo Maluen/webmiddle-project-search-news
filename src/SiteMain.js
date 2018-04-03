@@ -8,7 +8,7 @@
 //   - filter the articles another time (now we have the full info)
 // - merge the resulting articles from each page into a single list.
 
-import webmiddle, { PropTypes } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import Pipe from 'webmiddle-service-pipe';
 import ArrayMap from 'webmiddle-service-arraymap';
 import ProcessPage from './ProcessPage';

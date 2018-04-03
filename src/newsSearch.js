@@ -1,7 +1,7 @@
 // TODO: use the framework to define a search project with Main.js as entrypoint
 
 //import { SearchProject } from 'webmiddle-project-search';
-import webmiddle, { createContext } from "webmiddle";
+import { createContext } from "webmiddle";
 import path from "path";
 import fs from "fs";
 import Main from "./Main";

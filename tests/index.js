@@ -1,5 +1,5 @@
 import test from 'ava';
-import webmiddle, { evaluate, createContext } from 'webmiddle';
+import { evaluate, createContext } from 'webmiddle';
 import newsSearchContext, { Start } from '../src/newsSearch';
 
 test('Main', async t => {

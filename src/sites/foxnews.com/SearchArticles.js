@@ -1,4 +1,4 @@
-import webmiddle, { PropTypes } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import parentFoxNews from 'webmiddle-site-foxnews';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentFoxNews.services.SearchArticles;

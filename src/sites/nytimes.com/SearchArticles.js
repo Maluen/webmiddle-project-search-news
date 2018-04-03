@@ -1,4 +1,4 @@
-import webmiddle, { PropTypes } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 import JSONSelectToJson, { helpers } from 'webmiddle-service-jsonselect-to-json';

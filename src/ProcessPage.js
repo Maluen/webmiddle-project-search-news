@@ -1,4 +1,4 @@
-import webmiddle, { PropTypes, WithOptions } from 'webmiddle';
+import { PropTypes, WithOptions } from 'webmiddle';
 import Pipe from 'webmiddle-service-pipe';
 import ArrayMap from 'webmiddle-service-arraymap';
 import Filter from './Filter';

@@ -1,4 +1,4 @@
-import webmiddle, { PropTypes, pickDefaults } from 'webmiddle';
+import { PropTypes, pickDefaults } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentNyTimes.services.SearchArticles;

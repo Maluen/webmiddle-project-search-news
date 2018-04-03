@@ -1,4 +1,4 @@
-import webmiddle, { PropTypes } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 
 function Filter({ articles, filters }) {
   return {

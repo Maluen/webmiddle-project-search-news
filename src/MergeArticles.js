@@ -1,4 +1,4 @@
-import webmiddle, { PropTypes } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import _ from 'lodash';
 
 function MergeArticles({ articlesBySite }) {
