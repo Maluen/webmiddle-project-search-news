@@ -1,4 +1,4 @@
-import WebMiddle, { PropTypes } from 'webmiddle';
+import webmiddle, { PropTypes } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 import { getFormattedDate } from '../../utils';

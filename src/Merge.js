@@ -1,4 +1,4 @@
-import WebMiddle, { PropTypes, evaluate, createContext } from 'webmiddle';
+import webmiddle, { PropTypes, evaluate, createContext } from 'webmiddle';
 import _ from 'lodash';
 
 // null, undefined or empty string

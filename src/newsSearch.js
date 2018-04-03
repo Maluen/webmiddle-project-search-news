@@ -1,7 +1,7 @@
 // TODO: use the framework to define a search project with Main.js as entrypoint
 
 //import { SearchProject } from 'webmiddle-project-search';
-import WebMiddle, { createContext } from "webmiddle";
+import webmiddle, { createContext } from "webmiddle";
 import path from "path";
 import fs from "fs";
 import Main from "./Main";
@@ -35,8 +35,7 @@ const Start = props =>
     }}
   />;
 
-const webmiddle = new WebMiddle();
-const context = createContext(webmiddle, {
+const context = createContext({
   outputBasePath: path.resolve(__dirname, "../output"),
   verbose: false,
   networkRetries: err => {

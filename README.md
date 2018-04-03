@@ -1,6 +1,6 @@
 # webmiddle-project-search-news
 
-> [WebMiddle](https://webmiddle.github.io/) application for searching articles from news sites
+> [webmiddle](https://webmiddle.github.io/) application for searching articles from news sites
 
 Currently supported sites:
 - [The New York Times](https://github.com/Maluen/webmiddle-site-nytimes)
@@ -32,7 +32,7 @@ To start a fresh new search, just delete the `output` folder.
 
 ## Learn more
 
-Head to https://webmiddle.github.io/docs/example/ for a step-by-step guide on how this application was implemented by using [WebMiddle](https://webmiddle.github.io/).
+Head to https://webmiddle.github.io/docs/example/ for a step-by-step guide on how this application was implemented by using [webmiddle](https://webmiddle.github.io/).
 
 ## Screenshots
 
