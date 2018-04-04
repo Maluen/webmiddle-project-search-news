@@ -1,9 +1,9 @@
 import Server from "webmiddle-server";
-import newsSearchContext, { Start } from "./newsSearch";
+import { contextOptions, Start } from "./newsSearch";
 
 const server = new Server({
   "start": Start,
 }, {
-  context: newsSearchContext,
+  contextOptions,
 });
 server.start();

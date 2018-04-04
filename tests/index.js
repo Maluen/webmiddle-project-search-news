@@ -1,13 +1,14 @@
 import test from 'ava';
-import { evaluate, createContext } from 'webmiddle';
-import newsSearchContext, { Start } from '../src/newsSearch';
+import { rootContext } from 'webmiddle';
+import { contextOptions, Start } from '../src/newsSearch';
 
 test('Main', async t => {
-  await evaluate(createContext(newsSearchContext, {
+  await rootContext.extend({
+    ...contextOptions,
     expectResource: true,
-  }), (
+  }).evaluate(
     <Start />
-  ));
+  );
 
   t.pass();
 });

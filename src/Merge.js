@@ -1,4 +1,4 @@
-import { PropTypes, evaluate, createContext } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import _ from 'lodash';
 
 // null, undefined or empty string
@@ -8,7 +8,7 @@ function isInvalid(value) {
 
 async function Merge({ sources }, context) {
   sources = await Promise.all(
-    sources.map(s => evaluate(createContext(context, { expectResource: true }), s))
+    sources.map(s => context.extend({ expectResource: true }).evaluate(s)),
   );
   return {
     ...sources[0],

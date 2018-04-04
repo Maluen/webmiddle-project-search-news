@@ -1,14 +1,13 @@
 // TODO: use the framework to define a search project with Main.js as entrypoint
 
-import { evaluate, createContext } from "webmiddle";
-import { context as newsSearchContext, Start } from "./newsSearch";
+import { rootContext } from "webmiddle";
+import { contextOptions, Start } from "./newsSearch";
 import path from "path";
 import fs from "fs";
 
-const context = createContext(newsSearchContext);
-evaluate(context, <Start />).then(outputResource => {
+rootContext.evaluate(<Start />, contextOptions).then(outputResource => {
   const outputFilename = path.resolve(
-    context.options.outputBasePath,
+    contextOptions.outputBasePath,
     "./newsSearch.json"
   );
 
