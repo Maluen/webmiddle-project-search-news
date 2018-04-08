@@ -1,9 +1,13 @@
-import { PropTypes, pickDefaults } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentNyTimes.services.SearchArticles;
 
 function Meta({ nytimesApiKey, ...rest }, context) {
+  const {
+    resultsPerPage = parentNyTimes.settings.resultsPerPage,
+  } = context.options;
+
   return (
     <Pipe>
       <Parent
@@ -20,21 +24,13 @@ function Meta({ nytimesApiKey, ...rest }, context) {
           contentType: 'application/json',
           content: {
             count,
-            numberOfPages: Math.ceil(count / context.options.resultsPerPage),
+            numberOfPages: Math.ceil(count / resultsPerPage),
           },
         };
       }}
     </Pipe>
   );
 }
-
-Meta.options = (props, context) =>
-  pickDefaults(
-    {
-      resultsPerPage: parentNyTimes.settings.resultsPerPage
-    },
-    context.options
-  );
 
 Meta.propTypes = {
   nytimesApiKey: PropTypes.string.isRequired,

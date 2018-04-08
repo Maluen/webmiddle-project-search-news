@@ -1,9 +1,13 @@
-import { PropTypes, pickDefaults } from 'webmiddle';
+import { PropTypes } from 'webmiddle';
 import parentFoxNews from 'webmiddle-site-foxnews';
 import Pipe from 'webmiddle-service-pipe';
 const Parent = parentFoxNews.services.SearchArticles;
 
 function Meta(props, context) {
+  const {
+    resultsPerPage = parentFoxNews.settings.resultsPerPage,
+  } = context.options;
+
   return (
     <Pipe>
       <Parent
@@ -19,21 +23,13 @@ function Meta(props, context) {
           contentType: 'application/json',
           content: {
             count,
-            numberOfPages: Math.ceil(count / context.options.resultsPerPage),
+            numberOfPages: Math.ceil(count / resultsPerPage),
           },
         };
       }}
     </Pipe>
   );
 }
-
-Meta.options = (props, context) =>
-  pickDefaults(
-    {
-      resultsPerPage: parentFoxNews.settings.resultsPerPage
-    },
-    context.options
-  );
 
 Meta.propTypes = {
 
