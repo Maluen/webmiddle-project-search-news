@@ -37,12 +37,8 @@ const Start = props =>
 const contextOptions = {
   outputBasePath: path.resolve(__dirname, "../output"),
   verbose: false,
-  networkRetries: err => {
-    if (!isRetriable(err)) return 0;
-    return -1;
-  },
   ...(searchJson.contextOptions || {}),
-  ...(searchPrivateJson.contextOptions || {})
+  ...(searchPrivateJson.contextOptions || {}),
 };
 
 export { contextOptions };

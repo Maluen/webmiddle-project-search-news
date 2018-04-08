@@ -1,4 +1,4 @@
-import { PropTypes, WithOptions } from 'webmiddle';
+import { PropTypes, ErrorBoundary } from 'webmiddle';
 import Pipe from 'webmiddle-service-pipe';
 import ArrayMap from 'webmiddle-service-arraymap';
 import Filter from './Filter';
@@ -41,13 +41,13 @@ function ProcessPage({
           limit={1}
           callback={articleContent => (
             <Pipe>
-              <WithOptions catch={createEmptyArticleDetails}>
+              <ErrorBoundary handleCatch={createEmptyArticleDetails}>
                 <ArticleDetails
                   {...rest}
                   name="articleDetails"
                   url={articleContent.url}
                 />
-              </WithOptions>
+              </ErrorBoundary>
 
               {() => ({
                 name: 'article',
