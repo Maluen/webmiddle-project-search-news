@@ -25,7 +25,7 @@ The result will be saved in JSON format in the `output/newsSearch.json` file.
 
 ## Resuming
 
-The application uses the [Resume](https://github.com/webmiddle/webmiddle/tree/master/packages/webmiddle-service-resume) service, this means that the search will be resumed
+The application uses the [Resume](https://github.com/webmiddle/webmiddle/tree/master/packages/webmiddle-component-resume) component, this means that the search will be resumed
 in case the process is stopped before the search is complete (crash, etc.).
 
 To start a fresh new search, just delete the `output` folder.

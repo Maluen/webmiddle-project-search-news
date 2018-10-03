@@ -9,15 +9,15 @@
 // - merge the resulting articles from each page into a single list.
 
 import { PropTypes } from 'webmiddle';
-import Pipe from 'webmiddle-service-pipe';
-import ArrayMap from 'webmiddle-service-arraymap';
+import Pipe from 'webmiddle-component-pipe';
+import ArrayMap from 'webmiddle-component-arraymap';
 import ProcessPage from './ProcessPage';
 import _ from 'lodash';
-import Resume from 'webmiddle-service-resume';
+import Resume from 'webmiddle-component-resume';
 
-function SiteMain(props) {
+function SiteMain(props, context) {
   const { site } = props;
-  const { Meta } = site.services;
+  const { Meta } = site.components;
 
   return (
     <Pipe>
@@ -48,11 +48,11 @@ function SiteMain(props) {
         />
       }
 
-      {({ articlesByPage }) => ({
-        name: 'articles',
-        contentType: 'application/json',
-        content: [].concat(...articlesByPage.content.map(r => r.content)),
-      })}
+      {({ articlesByPage }) => context.createResource(
+        'articles',
+        'application/json',
+        [].concat(...articlesByPage.content.map(r => r.content)),
+      )}
     </Pipe>
   );
 }

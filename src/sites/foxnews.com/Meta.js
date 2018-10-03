@@ -1,7 +1,7 @@
 import { PropTypes } from 'webmiddle';
 import parentFoxNews from 'webmiddle-site-foxnews';
-import Pipe from 'webmiddle-service-pipe';
-const Parent = parentFoxNews.services.SearchArticles;
+import Pipe from 'webmiddle-component-pipe';
+const Parent = parentFoxNews.components.SearchArticles;
 
 function Meta(props, context) {
   const {
@@ -18,14 +18,10 @@ function Meta(props, context) {
 
       {({ firstPage }) => {
         const count = firstPage.content.root.count;
-        return {
-          name: 'meta',
-          contentType: 'application/json',
-          content: {
-            count,
-            numberOfPages: Math.ceil(count / resultsPerPage),
-          },
-        };
+        return context.createResource('meta', 'application/json', {
+          count,
+          numberOfPages: Math.ceil(count / resultsPerPage),
+        });
       }}
     </Pipe>
   );

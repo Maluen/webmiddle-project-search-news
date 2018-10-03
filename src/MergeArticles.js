@@ -1,7 +1,7 @@
 import { PropTypes } from 'webmiddle';
 import _ from 'lodash';
 
-function MergeArticles({ articlesBySite }) {
+function MergeArticles({ articlesBySite }, context) {
   const articlesContent = [];
 
   _.forEach(articlesBySite.content, (siteArticles, siteName) => {
@@ -12,11 +12,7 @@ function MergeArticles({ articlesBySite }) {
     articlesContent.push(...articlesContentToPush);
   });
 
-  return {
-    name: 'articles',
-    contentType: 'application/json',
-    content: articlesContent,
-  };
+  return context.createResource('articles', 'application/json', articlesContent);
 }
 
 MergeArticles.propTypes = {

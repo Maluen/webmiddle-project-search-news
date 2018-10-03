@@ -1,8 +1,8 @@
 import { PropTypes } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
-import Pipe from 'webmiddle-service-pipe';
+import Pipe from 'webmiddle-component-pipe';
 import { getFormattedDate } from '../../utils';
-const Parent = parentNyTimes.services.ArticleDetails;
+const Parent = parentNyTimes.components.ArticleDetails;
 
 function fixArticle(article) {
   return {
@@ -11,7 +11,7 @@ function fixArticle(article) {
   };
 }
 
-function ArticleDetails(props) {
+function ArticleDetails(props, context) {
   return (
     <Pipe>
       <Parent
@@ -19,11 +19,11 @@ function ArticleDetails(props) {
         name="page"
       />
 
-      {({ page }) => ({
-        name: 'articleDetails',
-        contentType: 'application/json',
-        content: fixArticle(page.content.root.article),
-      })}
+      {({ page }) => context.createResource(
+        'articleDetails',
+        'application/json',
+        fixArticle(page.content.root.article),
+      )}
     </Pipe>
   );
 }

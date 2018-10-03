@@ -1,9 +1,9 @@
 import { PropTypes } from 'webmiddle';
 import parentFoxNews from 'webmiddle-site-foxnews';
-import Pipe from 'webmiddle-service-pipe';
-const Parent = parentFoxNews.services.SearchArticles;
+import Pipe from 'webmiddle-component-pipe';
+const Parent = parentFoxNews.components.SearchArticles;
 
-function SearchArticles(props) {
+function SearchArticles(props, context) {
   return (
     <Pipe>
       <Parent
@@ -11,11 +11,11 @@ function SearchArticles(props) {
         name="page"
       />
 
-      {({ page }) => ({
-        name: 'searchArticles',
-        contentType: 'application/json',
-        content: page.content.root.articles.map(article => article.article),
-      })}
+      {({ page }) => context.createResource(
+        'searchArticles',
+        'application/json',
+        page.content.root.articles.map(article => article.article),
+      )}
     </Pipe>
   );
 }

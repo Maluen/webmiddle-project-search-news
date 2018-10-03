@@ -5,7 +5,7 @@ import ArticleDetails from './ArticleDetails';
 
 export default {
   name: parentFoxNews.name,
-  services: {
+  components: {
     Meta,
     SearchArticles,
     ArticleDetails,

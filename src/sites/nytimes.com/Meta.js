@@ -1,7 +1,7 @@
 import { PropTypes } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
-import Pipe from 'webmiddle-service-pipe';
-const Parent = parentNyTimes.services.SearchArticles;
+import Pipe from 'webmiddle-component-pipe';
+const Parent = parentNyTimes.components.SearchArticles;
 
 function Meta({ nytimesApiKey, ...rest }, context) {
   const {
@@ -19,14 +19,10 @@ function Meta({ nytimesApiKey, ...rest }, context) {
 
       {({ firstPage }) => {
         const count = firstPage.content.root.response.meta.hits;
-        return {
-          name: 'meta',
-          contentType: 'application/json',
-          content: {
-            count,
-            numberOfPages: Math.ceil(count / resultsPerPage),
-          },
-        };
+        return context.createResource('meta', 'application/json', {
+          count,
+          numberOfPages: Math.ceil(count / resultsPerPage),
+        });
       }}
     </Pipe>
   );

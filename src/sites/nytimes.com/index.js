@@ -5,7 +5,7 @@ import ArticleDetails from './ArticleDetails';
 
 export default {
   name: parentNyTimes.name,
-  services: {
+  components: {
     Meta,
     SearchArticles,
     ArticleDetails,

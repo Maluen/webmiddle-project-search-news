@@ -1,19 +1,16 @@
 import { PropTypes, ErrorBoundary } from 'webmiddle';
-import Pipe from 'webmiddle-service-pipe';
-import ArrayMap from 'webmiddle-service-arraymap';
+import Pipe from 'webmiddle-component-pipe';
+import ArrayMap from 'webmiddle-component-arraymap';
 import Filter from './Filter';
 import Merge from './Merge';
 
-const createEmptyArticleDetails = () => ({
-  name: 'articleDetails',
-  contentType: 'application/json',
-  content: {},
-});
+const createEmptyArticleDetails = context => () =>
+  context.createResource('articleDetails', 'application/json', {});
 
 function ProcessPage({
   site, query, startYear, endYear, pageNumber, filters, ...rest
-}) {
-  const { SearchArticles, ArticleDetails } = site.services;
+}, context) {
+  const { SearchArticles, ArticleDetails } = site.components;
 
   return (
     <Pipe>
@@ -41,7 +38,7 @@ function ProcessPage({
           limit={1}
           callback={articleContent => (
             <Pipe>
-              <ErrorBoundary handleCatch={createEmptyArticleDetails}>
+              <ErrorBoundary handleCatch={createEmptyArticleDetails(context)}>
                 <ArticleDetails
                   {...rest}
                   name="articleDetails"
@@ -49,11 +46,7 @@ function ProcessPage({
                 />
               </ErrorBoundary>
 
-              {() => ({
-                name: 'article',
-                contentType: 'application/json',
-                content: articleContent,
-              })}
+              {() => context.createResource('article', 'application/json', articleContent)}
 
               {({ article, articleDetails }) =>
                 <Merge
@@ -67,11 +60,11 @@ function ProcessPage({
       }
 
       {/* Flatten the resource of resources */}
-      {({ mergedArticleResources }) => ({
-        name: 'mergedArticles',
-        contentType: 'application/json',
-        content: mergedArticleResources.content.map(r => r.content),
-      })}
+      {({ mergedArticleResources }) => context.createResource(
+        'mergedArticles',
+        'application/json',
+        mergedArticleResources.content.map(r => r.content),
+      )}
 
       {({ mergedArticles }) =>
         <Filter

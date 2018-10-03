@@ -1,13 +1,13 @@
 import { PropTypes } from 'webmiddle';
 import parentNyTimes from 'webmiddle-site-nytimes';
-import Pipe from 'webmiddle-service-pipe';
-import JSONSelectToJson, { helpers } from 'webmiddle-service-jsonselect-to-json';
+import Pipe from 'webmiddle-component-pipe';
+import JSONSelectToJson, { helpers } from 'webmiddle-component-jsonselect-to-json';
 import { getFormattedDate } from '../../utils';
-const Parent = parentNyTimes.services.SearchArticles;
+const Parent = parentNyTimes.components.SearchArticles;
 
 const { elGet, elMap, elPipe } = helpers;
 
-function SearchArticles({ nytimesApiKey, ...rest }) {
+function SearchArticles({ nytimesApiKey, ...rest }, context) {
   return (
     <Pipe>
       <Parent
@@ -48,11 +48,11 @@ function SearchArticles({ nytimesApiKey, ...rest }) {
         </JSONSelectToJson>
       }
 
-      {({ searchArticles }) => ({
-        name: 'searchArticles',
-        contentType: 'application/json',
-        content: searchArticles.content.root.articles.map(article => article.article),
-      })}
+      {({ searchArticles }) => context.createResource(
+        'searchArticles',
+        'application/json',
+        searchArticles.content.root.articles.map(article => article.article),
+      )}
     </Pipe>
   );
 }

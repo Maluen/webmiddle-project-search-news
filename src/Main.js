@@ -1,6 +1,6 @@
 import { PropTypes } from 'webmiddle';
-import Pipe from 'webmiddle-service-pipe';
-import Parallel from 'webmiddle-service-parallel';
+import Pipe from 'webmiddle-component-pipe';
+import Parallel from 'webmiddle-component-parallel';
 import MergeArticles from './MergeArticles';
 import SiteMain from './SiteMain';
 import sites from './sites';
