@@ -2,6 +2,8 @@
 
 > [webmiddle](https://webmiddle.github.io/) application for searching articles from news sites
 
+## NOTE: THIS PROJECT IS DEPRECATED AS IS NOT SUPPORTED ANYMORE.
+
 Currently supported sites:
 - [The New York Times](https://github.com/Maluen/webmiddle-site-nytimes)
 - [Fox News](https://github.com/Maluen/webmiddle-site-foxnews)
